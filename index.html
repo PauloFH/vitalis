@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Vitalis — um jogo web sobre hábitos saudáveis." />
+  <title>Vitalis · Jogo da Saúde</title>
+  <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="./css/style.css" />
+</head>
+<body>
+  <div class="app">
+    <header class="hud">
+      <div class="brand">
+        <span class="logo" aria-hidden="true">🫀</span>
+        <h1>Vitalis</h1>
+      </div>
+      <div class="stats">
+        <div class="healthwrap">
+          <span class="label">Saúde</span>
+          <div class="healthbar" role="progressbar" aria-label="Saúde">
+            <div class="healthfill" id="healthfill"></div>
+          </div>
+        </div>
+        <div class="pill">
+          <span class="label">Pontos</span>
+          <strong id="score">0</strong>
+        </div>
+        <div class="pill">
+          <span class="label">Dia</span>
+          <strong id="day">0/7</strong>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section id="screen-start" class="screen">
+        <div class="startcard">
+          <div class="avatar-wrap">
+            <svg class="avatar" viewBox="0 0 140 140" role="img" aria-label="Mascote do Vitalis">
+              <circle cx="70" cy="70" r="56" fill="#7ed3a5" />
+              <circle cx="52" cy="60" r="8" fill="#17302c" />
+              <circle cx="88" cy="60" r="8" fill="#17302c" />
+              <path d="M52 78 q18 16 36 0" stroke="#17302c" stroke-width="4" fill="none" stroke-linecap="round" />
+              <path d="M70 100 C 62 92 50 96 50 106 C 50 116 60 122 70 126 C 80 122 90 116 90 106 C 90 96 78 92 70 100 Z" fill="#e0564f" />
+            </svg>
+          </div>
+          <h2>Bem-vindo ao Vitalis</h2>
+          <p class="tagline">
+            Guia seu mascote por 7 dias de hábitos saudáveis. Cuidar bem rende pontos;
+            se a saúde cair a zero, o jogo termina.
+          </p>
+          <ul class="rules">
+            <li>🍎 Cada dia tem 3 escolhas.</li>
+            <li>🩺 Escolha boa soma <strong>+20</strong> pontos (<strong>+10</strong> por sequência).</li>
+            <li>📉 Escolha ruim tira pontos da <strong>saúde</strong>.</li>
+            <li>🏁 No fim, um quiz de bônus rende <strong>+30</strong>.</li>
+          </ul>
+          <div class="row">
+            <button id="btn-start" class="btn primary">▶&nbsp;Jogar</button>
+          </div>
+        </div>
+      </section>
+
+      <section id="screen-day" class="screen hidden">
+        <div class="daycard">
+          <div class="dayhead">
+            <span class="day-icon" id="day-icon" aria-hidden="true">🍎</span>
+            <h2 id="day-title">Dia</h2>
+          </div>
+          <p class="prompt" id="day-prompt"></p>
+          <div class="choices" id="day-choices"></div>
+        </div>
+      </section>
+
+      <section id="screen-quiz" class="screen hidden">
+        <div class="daycard">
+          <div class="dayhead">
+            <span class="day-icon" id="quiz-icon" aria-hidden="true">🩺</span>
+            <h2>Bônus · Quiz</h2>
+          </div>
+          <p class="prompt" id="quiz-prompt"></p>
+          <div class="choices" id="quiz-choices"></div>
+        </div>
+      </section>
+
+      <section id="screen-result" class="screen hidden">
+        <div class="resultcard">
+          <h2 id="res-title">Resultado</h2>
+          <div class="resultgrid">
+            <div class="stat"><span class="label">Saúde final</span><strong id="res-health">0</strong></div>
+            <div class="stat"><span class="label">Pontos</span><strong id="res-score">0</strong></div>
+            <div class="stat"><span class="label">Nota</span><strong id="res-grade">–</strong></div>
+            <div class="stat"><span class="label">Recorde</span><strong id="res-best">0</strong></div>
+          </div>
+          <p class="msg" id="res-msg"></p>
+          <div class="row">
+            <button id="btn-again" class="btn primary">↻&nbsp;Jogar de novo</button>
+            <button id="btn-menu" class="btn ghost">🏠&nbsp;Menu</button>
+          </div>
+        </div>
+      </section>
+
+      <section id="screen-gameover" class="screen hidden">
+        <div class="resultcard">
+          <h2>😴 A saúde chegou a zero</h2>
+          <p class="msg">Seu mascote não aguentou. Tente escolhas melhores na próxima vez.</p>
+          <p class="stat">Pontos: <strong id="go-score">0</strong></p>
+          <div class="row">
+            <button id="btn-again2" class="btn primary">↻&nbsp;Tentar de novo</button>
+            <button id="btn-menu2" class="btn ghost">🏠&nbsp;Menu</button>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="foot">
+      <p>Feito com HTML/CSS/JS · mascote e ícones inspirados em Kenney (CC BY 3.0) · GitHub Pages</p>
+    </footer>
+  </div>
+  <script type="module" src="./js/main.js"></script>
+</body>
+</html>
